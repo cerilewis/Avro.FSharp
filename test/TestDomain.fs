@@ -44,6 +44,11 @@ type RecordWithOption = {
     Id2 : int option
 }
 
+type RecordWithComplexOption = {
+    Id: int
+    Child: SimpleRecord option
+}
+
 type GenericRecord<'T> = {
     Value : 'T
 }

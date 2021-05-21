@@ -41,8 +41,10 @@ module internal InstanceDirector =
                 | Array schema, TypeInfo.Seq itemType ->
                     let dctr = factory.ArrayDeconstructor tr.TargetType
                     builder.StartArray()
-                    builder.StartArrayBlock(int64(dctr.Size(obj)))
-                    for item in dctr.Items(obj) do write itemType schema.Items item
+                    let size = int64(dctr.Size(obj))
+                    if size<>0L then
+                        builder.StartArrayBlock(size)
+                        for item in dctr.Items(obj) do write itemType schema.Items item
                     builder.EndArray()
                 | Map schema, TypeInfo.Map (_,valueType)
                 | Map schema, TypeInfo.Dictionary (_,valueType) ->

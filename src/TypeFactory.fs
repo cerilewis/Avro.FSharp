@@ -365,13 +365,17 @@ type internal TypeFactory(targetType:TypeRecord, targetSchema:Schema, defValueCr
                             let caseRecord = cases.[idx]
                             schema.Fields |> Seq.iteri(fun idx fieldSchema -> prepare fieldSchema.Type caseRecord.CaseTypes.[idx])
                         | _ -> ())
-            | Union _, TypeInfo.Option someType ->
+            | Union schemas, TypeInfo.Option someType ->
                 let someUci = (FSharpType.GetUnionCases tr.TargetType).[1] // Option.Some
                 let someCtr = FSharpValue.PreComputeUnionConstructor someUci
                 let ctr = fun v -> someCtr [|v|]
                 optionConstructors.[tr.TargetType] <- optionConstructor ctr someType schema
                 let someReader = FSharpValue.PreComputeUnionReader someUci
                 optionDeconstructors.[tr.TargetType] <- fun (obj:obj) -> (someReader obj).[0]
+                match schemas.[1] with
+                | Record _ -> prepare schemas.[1] someType
+                | _ -> ()
+                
             | _ -> ()
 
     do prepare targetSchema targetType

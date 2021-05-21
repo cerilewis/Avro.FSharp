@@ -221,6 +221,19 @@ let optionTests =
                     ]
                 }"""
         }
+        test "Complex Option in Record" {
+            generateSchema typeof<RecordWithComplexOption>
+            |> Expect.wantOk "Schema should be created"
+            |> expectSchemasEqual <| Schema.ofString """
+                {
+                    "type":"record",
+                    "name":"Foo.Bar.RecordWithOption",
+                    "fields":[
+                        {"name":"Id","type":"int"},
+                        {"name":"Id2","type":[null,"int"]}
+                    ]
+                }"""
+        }
     ]|> testLabel "Schema"
 
 [<Tests>]
