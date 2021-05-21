@@ -227,10 +227,18 @@ let optionTests =
             |> expectSchemasEqual <| Schema.ofString """
                 {
                     "type":"record",
-                    "name":"Foo.Bar.RecordWithOption",
+                    "name":"Foo.Bar.RecordWithComplexOption",
                     "fields":[
                         {"name":"Id","type":"int"},
-                        {"name":"Id2","type":[null,"int"]}
+                        {"name":"Child","type":[null,
+                            {"type": "record",
+                            "name": "Foo.Bar.SimpleRecord",
+                            "fields" : [
+                                {"name": "Id", "type": "int"},
+                                {"name": "Name", "type": "string"},
+                                {"name": "Version", "type": "long"}
+                            ]}
+                        ]}
                     ]
                 }"""
         }
