@@ -5,9 +5,9 @@
     <Authors>usix</Authors>
     <Title>Avro.FSharp</Title>
     <Description>FSharp implementation of Apache Avro. The library generates an Avro schema by an F# type as well as serialize and deserialize an F# data in binary and json encodings.</Description>
-    <AssemblyVersion>0.4.0.0</AssemblyVersion>
-    <FileVersion>0.4.0.0</FileVersion>
-    <Version>0.4.0.0</Version>
+    <AssemblyVersion>0.4.1.0</AssemblyVersion>
+    <FileVersion>0.4.1.0</FileVersion>
+    <Version>0.4.1.0</Version>
     <PackageTags>Avro;FSharp</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/usix79/Avro.FSharp</RepositoryUrl>
