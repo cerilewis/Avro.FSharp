@@ -373,8 +373,12 @@ type internal TypeFactory(targetType:TypeRecord, targetSchema:Schema, defValueCr
                 let someReader = FSharpValue.PreComputeUnionReader someUci
                 optionDeconstructors.[tr.TargetType] <- fun (obj:obj) -> (someReader obj).[0]
                 match schemas.[1] with
-                | Record _ -> prepare schemas.[1] someType
-                | _ -> ()
+                | Record _
+                | Union _
+                | Array _
+                | Map _ -> prepare schemas.[1] someType
+                | _ ->
+                    ()
                 
             | _ -> ()
 

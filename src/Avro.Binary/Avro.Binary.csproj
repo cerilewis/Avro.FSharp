@@ -2,6 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageId>Avro.Binary</PackageId>
+        <Title>Avro.Binary</Title>
+        <AssemblyVersion>0.4.1.0</AssemblyVersion>
+        <FileVersion>0.4.1.0</FileVersion>
+        <Version>0.4.1.0</Version>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
 </Project>
